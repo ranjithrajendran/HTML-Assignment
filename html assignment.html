@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PERSONAL DETAILS</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+	table{
+    border-spacing: 0.3px;
+    border-color: gray;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		 <div class="row"></div>
+		 <div class="row"></div>
+		 <div class="row">
+		 	<div class="col-sm-4"></div>
+	   		<div class="col-sm-4">
+	   			<div class="form-group"><h3>&nbsp&nbsp</h3><h3 class="text-center"><b>PERSONAL DELAILS</b></h3><br>
+	   				<form >
+	   				<div><label class="radio-inline"><input type="radio" name="gender" value="male">Mr &nbsp&nbsp</label>
+						<label class="radio-inline"><input type="radio" name="gender" value="female">Ms/Mrs &nbsp&nbsp</label>
+						<label class="radio-inline"><input type="radio" name="gender" value="transgender">Mx &nbsp&nbsp</label></div>
+  					<div class="row" class="text-left" class="col-sm-3" ><label for="name2">Name:</label>
+  						<input type="uname" class="form-control" id="name2" placeholder="enter your name"></div><br>
+  					<div class="row" class="text-left" class="col-sm-3" class="input-group" ><label for="email">Email id:</label>
+  						<input type="email" class="form-control" id="email" placeholder="enter your email id"></div><br>
+  						<div class="row" class="text-left" class="col-sm-3" ><label for="dob">Date Of Birth:</label>
+  						<input type="date" class="form-control" id="dob" ></div><br>
+  					<div class="row" class="text-left" class="col-sm-3" ><label for="pwd">Qualification:&nbsp&nbsp&nbsp&nbsp</label>
+  						<label class="radio-inline"><input type="radio" name="qualification" value="B-Tech">B-Tech &nbsp&nbsp</label>
+						<label class="radio-inline"><input type="radio" name="qualification" value="M-Tech">M-Tech &nbsp&nbsp</label>
+						<label class="radio-inline"><input type="radio" name="qualification" value="PHD">PHD</label></div><br>
+					<div class="row" class="text-left" class="col-sm-3">
+						<label for="branch">QBurst Branch:</label>
+						<select class="form-control" id="branch">
+						   <option>Calicut</option>
+						   <option>Cochin</option>
+						   <option>Trissur</option>
+						   <option>Trivandrum</option>
+						</select></div><br><br>
+						<div class="col-sm-4"></div>
+						<div class="col-sm-4">
+						<div class="row" class="text-center">
+						<input type="submit" class="btn btn-success" value="Submit Details" onclick="loadtostorage()"></div></div>
+						<div class="col-sm-4"></div>
+					</form>
+				</div><br><br><br><br><br>
+			</div>
+			<div class="col-sm-4"></div>
+	  </div> 
+	  <div class="row">
+	  	<div class="row" class="col-sm-8" id="head"></div><br>
+	  		<div class="col-sm-5">
+	  			<h3 class="text-center"><b>STORED DETAILS</b></h3>
+	  		<table border="1" class="table">
+	  			<th>Attribute</th><th>Value</th>
+	  			<tr>
+	  				<td ><h5>Name</h5></td>
+	  				<td ><div  id="name1"></div></td>
+				</tr>
+				<tr>
+	  				<td ><h5>Gender</h5></td>
+	  				<td ><div  id="gender1"></div></td>
+				</tr>
+				<tr>
+	  				<td ><h5>Email</h5></td>
+	  				<td ><div id="email1"></div></td>
+				</tr>
+				<tr>
+	  				<td ><h5>Date Of Birth</h5></td>
+	  				<td ><div id="dob1"></div></td>
+				</tr>
+				<tr>
+	  				<td ><h5>Qualification</h5></td>
+	  				<td ><div  id="qualification1"></div></td>
+				</tr>
+				<tr>
+	  				<td ><h5>Branch</h5></td>
+	  				<td ><div  id="branch1"></div></td>
+				</tr>
+			</table><div class="col-sm-7"></div>
+			</div>
+	  </div>
+	</div>
+
+<script type="text/javascript">
+
+	function loadtostorage(){
+		var name=document.getElementById("name2");
+		var email=document.getElementById("email");
+		var dob=document.getElementById("dob");
+		var branch=document.getElementById("branch");
+		
+		name.value.trim()!=""?localStorage.setItem('name',name.value):null
+        email.value.trim()!=""?localStorage.setItem('email',email.value):null
+        dob.value.trim()!=""?localStorage.setItem('dob',dob.value):null
+        branch.value.trim()!=""?localStorage.setItem('branch',branch.value):null
+		$('input[name=gender]:checked').val().trim()!=""?localStorage.setItem('gender', $('input[name=gender]:checked').val() ):null
+		$('input[name=qualification]:checked').val().trim()!=""?localStorage.setItem('qualification', $('input[name=qualification]:checked').val() ):null
+	}
+	window.onload = function(){
+		
+		document.getElementById('name1').innerHTML =localStorage.getItem('name')
+	    document.getElementById('gender1').innerHTML =localStorage.getItem('gender')
+	    document.getElementById('email1').innerHTML =localStorage.getItem('email')
+	    document.getElementById('dob1').innerHTML =localStorage.getItem('dob')
+	    document.getElementById('qualification1').innerHTML =localStorage.getItem('qualification')
+	    document.getElementById('branch1').innerHTML = localStorage.getItem('branch')
+	}
+
+</script>
+</body>
+</html>
